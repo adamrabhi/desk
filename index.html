@@ -7,10 +7,12 @@
         background-color:aqua;
         border: 2px orange;
         border-radius: 8px;
+         
     }
     .calculatoroutput {
         width:50px;
         background-color: gray;
+        text-align: right;
     }
     .calculatorbuttons{
         width:50px;
@@ -18,15 +20,18 @@
     }
     .calculatorbuttons--calculatoperator{
         width:50px;
+        background-color: orchid;
     }
     .calculatorbuttons--calculatorenter{
         width:50px;
+        background-color: greenyellow;
     }
 </style>
 <body>
+    <title>Your Desk</title>
     <h1>mydesk</h1>
 <div class="calculator">
-    <div class="calculatorout"</div>
+    <div class="calculatoroutput"</div>
     <div class="calculatorbuttons"</div>
         <button class="calculatorbuttons--calculatoroperator">+</button>
         <button class="calculatorbuttons calculatoroperator">-</button>
@@ -45,5 +50,66 @@
     </div>
 </div>
 </body>
+<script>
+    let output = document.getElementById("output");
+
+    let firstNumber = "";
+    let secondNumber = "";
+    let operation = "";
+    let startingSecondNumber = false;
+
+    function addNumber(number) {
+        if (startingSecondNumber == true) {
+            output.value = "0";
+            startingSecondNumber = false;
+        }
+
+        if(output.value == "0" && number !=".") {
+            output.value = number;
+        }
+    }
+
+    function chooseOperation(selectedOperation) {
+
+        firstNumber = output.value;
+        operation = selectedOperation;
+        startingSecondNumber = true;
+    }
+
+    function calculate() {
+
+        secondNumber = output.value;
+
+        if (operation == "+") {
+            output.value = Number(firstNumber) + Number(secondNumber);
+        }
+
+        if (operation == "-") {
+            output.value = Number(firstNumber) - Number(secondNumber);
+        }
+
+        if (operation == "x") {
+            output.value = Number(firstNumber) * Number(secondNUmber);
+        }
+        if (operation == "/") {
+            if (output === 0){
+                output.value = "Coudlnt have worked ):"
+            }
+            output.value = Number(firstNumber) / Number(secondNumber);
+        }  
+        
+        operation = "";
+        startingSecondNumber = true;
+    
+    }
+
+    function clearCalculator(){
+        output.value = "0";
+        firstNumber = "";
+        secondNumber = "";
+        operation = "";
+        startingSecondNumber = false;
+    }
+</script>
 
 </html>
