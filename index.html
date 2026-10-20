@@ -31,22 +31,24 @@
     <title>Your Desk</title>
     <h1>mydesk</h1>
 <div class="calculator">
-    <div class="calculatoroutput"</div>
+    <input id="calculatoroutput" value="0" readonly>
     <div class="calculatorbuttons"</div>
-        <button class="calculatorbuttons--calculatoroperator">+</button>
-        <button class="calculatorbuttons calculatoroperator">-</button>
-        <button class="calculatorbuttons calculatoroperator">x</button>
-        <button class="calculatorbuttons calculatoroperator">/</button>
-        <button class="calculatorbuttons">1</button>
-        <button class="calculatorbuttons">2</button>
-        <button class="calculatorbuttons">3</button>
-        <button class="calculatorbuttons">4</button>
-        <button class="calculatorbuttons">5</button>
-        <button class="calculatorbuttons">6</button>
-        <button class="calculatorbuttons">7</button>
-        <button class="calculatorbuttons">8</button>
-        <button class="calculatorbuttons">9</button>
-        <button class="calculatorbuttons--calculatorenter">=</button>
+        <button onclick="chooseOperation('+')">+</button>
+        <button onclick="chooseOperation('-')">-</button>
+        <button onclick="chooseOperation('x')">x</button>
+        <button onclick="chooseOperation('/')">/</button>
+        <button onclick="addNumber('1')">1</button>
+        <button onclick="addNumber('2')">2</button>
+        <button onclick="addNumber('3')">3</button>
+        <button onclick="addNumber('4')">4</button>
+        <button onclick="addNumber('5')">5</button>
+        <button onclick="addNumber('6')">6</button>
+        <button onclick="addNumber('7')">7</button>
+        <button onclcik="addNumber('8')">8</button>
+        <button onclick="addNumber('9')">9</button>
+        <button onclick="addNumber('0')">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="clearCalculator()">AC</button>
     </div>
 </div>
 </body>
@@ -59,13 +61,15 @@
     let startingSecondNumber = false;
 
     function addNumber(number) {
-        if (startingSecondNumber == true) {
+        if (startingSecondNumber) {
             output.value = "0";
             startingSecondNumber = false;
         }
 
-        if(output.value == "0" && number !=".") {
-            output.value = number;
+        if(output.value == "0") {
+            outout.value = number;
+        } else {
+            output.value += number;
         }
     }
 
@@ -89,7 +93,7 @@
         }
 
         if (operation == "x") {
-            output.value = Number(firstNumber) * Number(secondNUmber);
+            output.value = Number(firstNumber) * Number(secondNumber);
         }
         if (operation == "/") {
             if (output === 0){
