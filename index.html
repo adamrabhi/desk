@@ -96,8 +96,11 @@
             output.value = Number(firstNumber) * Number(secondNumber);
         }
         if (operation == "/") {
-            if (output === 0){
-                output.value = "Coudlnt have worked ):"
+            if (Number(secondNumber) === 0) {
+                output.value = "Cannot divide by 0";
+                operation = "";
+                startingSecondNumber = true;
+                return;
             }
             output.value = Number(firstNumber) / Number(secondNumber);
         }  
