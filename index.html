@@ -62,27 +62,33 @@
 
     function addNumber(number) {
         if (startingSecondNumber) {
-            output.value = "0";
+            output.value = firstNumber + " " + operation + " ";
             startingSecondNumber = false;
         }
 
-        if(output.value == "0") {
-            output.value = number;
+        if(output.value == "") {
+            if (output.value == "0") {
+            output.value = number; 
         } else {
             output.value += number;
-        }
+         } 
+        } else {
+            output.value += number;
     }
+}
+     
 
     function chooseOperation(selectedOperation) {
 
         firstNumber = output.value;
         operation = selectedOperation;
+        output.value = firstNumber + " " + operation;
         startingSecondNumber = true;
     }
 
     function calculate() {
 
-        secondNumber = output.value;
+        secondNumber = output.value.split(" ").pop();
 
         if (operation == "+") {
             output.value = Number(firstNumber) + Number(secondNumber);
