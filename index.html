@@ -32,7 +32,7 @@
     <h1>mydesk</h1>
 <div class="calculator">
     <input id="calculatoroutput" value="0" readonly>
-    <div class="calculatorbuttons"></div>
+    <div class="calculatorbuttons">
         <button onclick="chooseOperation('+')">+</button>
         <button onclick="chooseOperation('-')">-</button>
         <button onclick="chooseOperation('x')">x</button>
@@ -44,7 +44,7 @@
         <button onclick="addNumber('5')">5</button>
         <button onclick="addNumber('6')">6</button>
         <button onclick="addNumber('7')">7</button>
-        <button onclcik="addNumber('8')">8</button>
+        <button onclick="addNumber('8')">8</button>
         <button onclick="addNumber('9')">9</button>
         <button onclick="addNumber('0')">0</button>
         <button onclick="calculate()">=</button>
@@ -53,7 +53,7 @@
 </div>
 </body>
 <script>
-    let output = document.getElementById("output");
+    let output = document.getElementById("calculatoroutput");
 
     let firstNumber = "";
     let secondNumber = "";
