@@ -18,21 +18,22 @@ body{
 <style>
     .calculator {
         width: 300px;
-        padding: 20px;
+        padding: 4px;
         background-color:gray;
         border: 50px orange;
         border-radius: 10px;
         max-inline-size: 100px;
         overflow: hidden;
         box-shadow: 2px 2px 4x #000;
+        position:absolute
     }
     .calculatoroutput {
-        width:20px;
+        width:90px;
         background-color: gray;
         text-align: right;
     }
     .calculatorbuttons{
-        width:50px;
+        width:90px;
         background-color: orange;
     }
     .calculatorbuttons--calculatoperator{
@@ -47,7 +48,7 @@ body{
 <body>
     <title>Your Desk</title>
     <h1 style=>mydesk</h1> 
-<div class="calculator">
+<div class="calculator" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
     <div class="calculatorbuttons">
         <button onclick="chooseOperation('+')">+</button>
@@ -139,6 +140,18 @@ body{
         secondNumber = "";
         operation = "";
         startingSecondNumber = false;
+    }
+
+    let calculator = document.getElementById("calculator");
+
+    calculator.onmousedown = function() {
+        calcuator.onmousemove = function(e) {
+        calculator.style.left = e.clientX + "px";
+        calculator.style.top = e.clientY + "px";
+        };
+    };
+    document.onmouseup = function() {
+        document.onmousemove = null
     }
 </script>
 
