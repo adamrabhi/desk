@@ -56,7 +56,7 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 11:20</h1> 
+    <h1 style=>mydesk vercel updated 10:40</h1> 
 <div class="clock" id="clock"></div>
 <div class="calculator" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
@@ -155,7 +155,7 @@ body{
     let calculator = document.getElementById("calculator");
 
     calculator.onmousedown = function() {
-        calculator.onmousemove = function(e) {
+        document.onmousemove = function(e) {
         calculator.style.left = e.clientX + "px";
         calculator.style.top = e.clientY + "px";
         };
