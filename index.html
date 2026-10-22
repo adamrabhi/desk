@@ -18,11 +18,12 @@ body{
 <style>
     .clock {
         width:100px;
-        height:20px;
+        height:100px;
         position:absolute;
-        background-color: darkgray;
-        border: 50px darkgray;
-        border-radius: 100px;
+        background-color: white;
+        border: 3px black;
+        border-radius: 50%;
+        align-items: center;
 
     }
     .calculator {
@@ -56,7 +57,7 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 10:40</h1> 
+    <h1 style=>mydesk vercel updated 10:53</h1> 
 <div class="clock" id="clock"></div>
 <div class="calculator" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
@@ -166,7 +167,7 @@ body{
     
     function updateClock() {
         document.getElementById("clock").textContent =
-            new Date().toLocaleString();
+            new Date().toLocaleTimeString();
     } 
 
     setInterval(updateClock, 1000);
