@@ -21,12 +21,27 @@ body{
         height:100px;
         position:absolute;
         background-color: whitesmoke;
-        border: 10px teal;
+        border: 10px solid teal;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+  }
+    .calendar-top {
+        width: 100%;
+        height: 25px;
+        flex-shrink: 0;
+        background-color: teal;
     }
+
+    .calendar-date {
+        padding: 10px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .clock {
         width:100px;
         height:100px;
@@ -72,7 +87,7 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 1156</h1> 
+    <h1 style=>mydesk vercel updated 1205</h1> 
 <div class="calendar" id="calendar"></div>
 <div class="clock" id="clock"></div>
 <div class="calculator" id="calculator">
@@ -190,7 +205,7 @@ body{
     updateClock();
 
     function updateCalendar() {
-        document.getElementById("calendar").textContent =
+        document.querySelector(".calendar-date").textContent =
             new Date().toLocaleDateString();
     }
 
@@ -211,14 +226,19 @@ body{
 
     let calendar = document.getElementById("calendar");
 
+    calendar.onmousedown = function(e) {
+        let offsetX = e.clientX - calendar.offsetLeft;
+        let offsetY = e.clientY - calendar.offsetTop;
+    }
     calendar.onmousedown = function() {
         document.onmousemove = function(e) {
-            calendar.style.left = e.clientX + "px";
-            calendar.style.top = e.clientY + "px";
+            calendar.style.left = (e.clientX - offsetX) + "px";
+            calendar.style.top = (e.clientY - offsetY) + "px";
         };
     };
     document.onmouseup = function() {
         document.onmousemove = null
+        document.onmouseup = null;
     }
 </script>
 
