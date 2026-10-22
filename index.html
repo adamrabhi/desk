@@ -171,6 +171,18 @@ body{
 
     setInterval(updateClock, 1000);
     updateClock();
+
+    let clock = document.getElementById("clock");
+    
+    clock.onmousedown = function() {
+        document.onmousemove = function(e) {
+            clock.style.left = e.clientX + "px";
+            clock.style.top = e.clientY + "px";
+        };
+    };
+    document.onmouseup = function() {
+        document.onmousemove = null
+    }
 </script>
 
 </html>
