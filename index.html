@@ -87,8 +87,10 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 1205</h1> 
+    <h1 style=>mydesk vercel updated 1211</h1> 
 <div class="calendar" id="calendar"></div>
+    <div class="calendar-top"></div>
+    <div class="calendar-date"></div>
 <div class="clock" id="clock"></div>
 <div class="calculator" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
@@ -229,17 +231,17 @@ body{
     calendar.onmousedown = function(e) {
         let offsetX = e.clientX - calendar.offsetLeft;
         let offsetY = e.clientY - calendar.offsetTop;
-    }
-    calendar.onmousedown = function() {
+    
         document.onmousemove = function(e) {
             calendar.style.left = (e.clientX - offsetX) + "px";
             calendar.style.top = (e.clientY - offsetY) + "px";
         };
-    };
+
     document.onmouseup = function() {
         document.onmousemove = null
         document.onmouseup = null;
-    }
+    };
+    };
 </script>
 
 </html>
