@@ -16,6 +16,11 @@ body{
 }
 </style>
 <style>
+    .clock {
+        width:300px;
+        height:300px;
+        position:absolute
+    }
     .calculator {
         width: 300px;
         padding: 4px;
@@ -48,6 +53,7 @@ body{
 <body>
     <title>Your Desk</title>
     <h1 style=>mydesk vercel updated 11:20</h1> 
+<div class="clock" id="clock"></div>
 <div class="calculator" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
     <div class="calculatorbuttons">
@@ -153,6 +159,14 @@ body{
     document.onmouseup = function() {
         document.onmousemove = null
     }
+    
+    function updateClock() {
+        document.getElementById("clock").textContent =
+            new Date().toLocaleString();
+    } 
+
+    setInterval(updateClock, 1000);
+    updateClock();
 </script>
 
 </html>
