@@ -84,10 +84,23 @@ body{
         width:50px;
         background-color: greenyellow;
     }
+    .stickynote {
+        width: 150px;
+        position: absolute;
+        background-color: yellow;
+        padding: 15px;
+    }
+    .textarea {
+        width:100%;
+        height:100px;
+        box-sizing:border-box;
+        border: none;
+        background-color: yellow;
+     }
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 657</h1> 
+    <h1 style=>mydesk vercel updated 708</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -244,6 +257,18 @@ body{
         document.onmouseup = null;
     };
     };
+
+    function addStickyNote() {
+        let note = document.createElement("div");
+        note.className = "stickynote";
+        note.style.left = "200px";
+        note.style.top = "200px";
+
+        let text = document.createElement("textarea");
+
+        note.appendChild(text);
+        document.body.appendChild(note);
+    }
 </script>
 
 </html>
