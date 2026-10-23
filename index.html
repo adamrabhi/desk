@@ -269,6 +269,23 @@ body{
         note.appendChild(text);
         document.body.appendChild(note);
     }
+
+    let stickynote = document.getElementById("stickynote");
+
+    stickynote.onmousedown = function(e) {
+        let offsetX = e.clientX - stickynote.offsetLeft;
+        let offsetY = e.clientY - stickynote.offsetTop;
+
+        document.onmousemove = function(e) {
+            stickynote.style.left = (e.clientX- offsetX) + "px";
+            stickynote.style.top =(e.clientY - offsetY) + "px";
+        };
+    
+    document.onmouseup = function() {
+        document.onmousemove = null
+        document.onmouseup = null;
+    }
+    }
 </script>
 
 </html>
