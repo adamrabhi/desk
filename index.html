@@ -102,10 +102,18 @@ body{
         bottom: 10px;
         left: 10px;
      }
+     .todo {
+        width: 200px;
+        position: absolute;
+        left: 400px;
+        top: 100px;
+        background-color: red;
+        padding: 15 px;
+     }
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 1059</h1> 
+    <h1 style=>mydesk vercel updated 550</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -136,6 +144,12 @@ body{
 <div id="colorpicker">
     <input id="hexinput" placeholder="#000000">
     <button onclick="changeBackground()">Change Background</button>"
+</div>
+<div class="todo" id="todo">
+    <h3>To-Do List</h3>
+    <input id="todoinput" placeholder="New task">
+    <button onclick="addTask()">Add</button>
+    <ul id="todolist"></ul>
 </div>
 </body>
 <script>
@@ -319,6 +333,50 @@ function changeBackground() {
     let hexInput = document.getElementById("hexinput");
     document.body.style.backgroundColor = hexInput.value;
 }
+
+function addTask() {
+    let input = document.getElementById("todoinput")
+    let list = document.getElementById("todolist");
+
+    if (input.value == "") {
+        return;
+    }
+
+    let item = document.createElement("li");
+    item.textContent = input.value;
+
+    let deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.onclick = function() {
+        item.remove();
+    };
+
+    item.appendChild(deleteButton);
+    list.appendChild(item);
+
+    input.value = "";
+}
+
+let todo = document.getElementById("todo");
+
+todo.onmousedown = function(e) {
+    if (e.target != todo) {
+        return;
+    }
+
+    let offsetX = e.clientX - todo.offsetLeft;
+    let offsetY = e.clientY - todo.offsetTop;
+
+    document.onmousemove = function(e) {
+        todo.style.left = (e.clientX - offsetX) + "px";
+        todo.style.top = (e.clientY - offsetY) + "px";
+    };
+
+    document.onmouseup = function() {
+        document.onmousemove = null;
+        document.onmouseup = null;
+    };
+};
 </script>
 
 </html>
