@@ -168,7 +168,7 @@ body{
  </div>
 <div class="stopwatch" id="stopwatch">
     <h3>Stopwatch</h3>
-    <div id="stopwatchtime">0</div>
+    <div id="stopwatchtime">00:00:00.000</div>
     <button onclick="startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
@@ -400,33 +400,47 @@ todo.onmousedown = function(e) {
     };
 };
 
-let seconds = 0;
+let totalMs = 0;
 let timer = null;
 let running = false;
+
+function showTime() {
+    let hours = Math.floor(totalMs / 3600000);
+    let minutes = Math.floor(totalsMs / 60000) % 60;
+    let seconds = Math.floor(totalMs / 1000) % 60;
+    let milliseconds = totalsMs % 1000;
+
+    hours = String(hours).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    milliseconds = Stromg(milliseconds).padStart(3,"0");
+
+    document.getElementById("stopwatchtime").textContent =
+    hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+}
 
 function startStopwatch() {
     if (running) {
         return;
     }
-
+    
     running = true;
     timer = setInterval(function() {
-        seconds = seconds + 1;
-        document.getElementById("stopwatchtime").textContent = seconds; }, 1000);
-    }
+        totalMs = totalMs + 10;
+        showTime(); }, 10); 
+}
 
-    function stopStopwatch() {
-        clearInterval(timer);
-        running = false;
-    }
+function stopStopwatch() {
+    clearInterval(timer);
+    running = false;
+}
 
-    function resetStopwatch() {
-        clearInterval(timer);
-        running = false;
-        seconds = 0;
-        document.getElementById("stopwatchtime").textContent = seconds;
-    }
-
+function resetStopwatch() {
+    clearInterval(timer);
+    running = false;
+    totalMs = 0;
+    showTime();
+}
     let stopwatch = document.getElementById("stopwatch");
 
     stopwatch.onmousedown = function(e) {
