@@ -64,7 +64,6 @@ body{
         border-radius: 10px;
         max-inline-size: 100px;
         overflow: hidden;
-        box-shadow: 2px 2px 4px #000;
         position:absolute;
     }
     .calculatoroutput {
@@ -126,7 +125,8 @@ body{
         align-items: center;
      }
     .coin {
-        width: 150px;
+        width: 100px;
+        height: 100px;
         position: absolute;
         left: 500px;
         top: 500px;
@@ -140,7 +140,7 @@ body{
 </style>
 <body></body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 713</h1> 
+    <h1 style=>mydesk vercel updated 719</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -489,6 +489,26 @@ function resetStopwatch() {
             document.getElementById("coinresult").textContent = "Tails";
         }
     }
+    let coin = document.getElementById("coin");
+
+    coin.onmousedown = function(e) {
+        if (e.target != todo) {
+            return;
+        }
+
+        let offsetX = e.clientX - todo.offsetLeft;
+        let offsetY = e.clientY - todo.offsetTop;
+
+        document.onmousemove = function(e) {
+            todo.style.left = (e.clientX - offsetX) + "px";
+            todo.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
 </script>
 
 </html>
