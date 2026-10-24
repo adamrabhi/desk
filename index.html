@@ -128,7 +128,7 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 640</h1> 
+    <h1 style=>mydesk vercel updated 644</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -366,6 +366,9 @@ function addTask() {
 
     let item = document.createElement("li");
     item.textContent = input.value;
+    item.onclick = function() {
+        item.style.textDecoration = "line-through";
+    }
 
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
