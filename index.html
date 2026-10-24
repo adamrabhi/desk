@@ -117,7 +117,7 @@ body{
         left: 400px;
         top: 400px;
         background-color:azure;
-        border-radius: 10px solid black;
+        border: 10px solid black;
         padding: 15px;
         border-radius: 50%;
         display: flex;
@@ -128,7 +128,7 @@ body{
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 616</h1> 
+    <h1 style=>mydesk vercel updated 637</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -406,14 +406,14 @@ let running = false;
 
 function showTime() {
     let hours = Math.floor(totalMs / 3600000);
-    let minutes = Math.floor(totalsMs / 60000) % 60;
+    let minutes = Math.floor(totalMs / 60000) % 60;
     let seconds = Math.floor(totalMs / 1000) % 60;
     let milliseconds = totalsMs % 1000;
 
     hours = String(hours).padStart(2, "0");
     minutes = String(minutes).padStart(2, "0");
     seconds = String(seconds).padStart(2, "0");
-    milliseconds = Stromg(milliseconds).padStart(3,"0");
+    milliseconds = Strimg(milliseconds).padStart(3,"0");
 
     document.getElementById("stopwatchtime").textContent =
     hours + ":" + minutes + ":" + seconds + "." + milliseconds;
