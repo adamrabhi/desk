@@ -493,16 +493,16 @@ function resetStopwatch() {
     let coin = document.getElementById("coin");
 
     coin.onmousedown = function(e) {
-        if (e.target != todo) {
+        if (e.target != coin) {
             return;
         }
 
-        let offsetX = e.clientX - todo.offsetLeft;
-        let offsetY = e.clientY - todo.offsetTop;
+        let offsetX = e.clientX - coin.offsetLeft;
+        let offsetY = e.clientY - coin.offsetTop;
 
         document.onmousemove = function(e) {
-            todo.style.left = (e.clientX - offsetX) + "px";
-            todo.style.top = (e.clientY - offsetY) + "px";
+            coin.style.left = (e.clientX - offsetX) + "px";
+            coin.style.top = (e.clientY - offsetY) + "px";
         };
 
         document.onmouseup = function() {
