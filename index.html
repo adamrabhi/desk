@@ -134,7 +134,7 @@ body{
     </div>
 </div>
 <div id="colorpicker">
-    <input id="hexinput" placeholder="#ff000">
+    <input id="hexinput" placeholder="#000000">
     <button onclick="changeBackground()">Change Background</button>"
 </div>
 </body>
@@ -266,11 +266,11 @@ body{
         document.onmouseup = null;
     };
     };
-
+    let highestLayer = 1;
     function addStickyNote() {
         
-        let colors = ["red","orange","yellow","green","blue","indigo","violet"];
-        let randomNumber = Math.floor(Math.random() * 7);
+        let colors = ["red","orange","yellow","green","blue","indigo","violet", "pink", "white","brown",];
+        let randomNumber = Math.floor(Math.random() * 10);
         let randomColor = colors[randomNumber];
         let note = document.createElement("div");
         note.className = "stickynote";
@@ -293,6 +293,8 @@ body{
         
     
     note.onmousedown = function(e) {
+        highestLayer = highestLayer + 1;
+        note.style.zIndex = highestLayer;
 
         if (e.target != note) {
             return;
