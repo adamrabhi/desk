@@ -125,10 +125,22 @@ body{
         justify-content: center;
         align-items: center;
      }
+    .coin {
+        width: 150px;
+        position: absolute;
+        left: 200px;
+        top: 200px;
+        background-color: #CD7F32;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 644</h1> 
+    <h1 style=>mydesk vercel updated 711</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -172,6 +184,11 @@ body{
     <button onclick="startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
+</div>
+<div class="coin" id="coin">
+    <h3>Coin Flip</h3>
+    <div id="coinresult">1 cent</div>
+    <button onclick="flipCoin()">Flip</button>
 </div>
 </body>
 <script>
@@ -464,6 +481,14 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
+    function flipCoin() {
+        let randomNumber = Math.floor(Math.random() * 2);
+        if (randomNumber == 0) {
+            document.getElementById("coinresult").textContent = "Heads";
+        } else {
+            document.getElementById("coinresult").textContent = "Tails";
+        }
+    }
 </script>
 
 </html>
