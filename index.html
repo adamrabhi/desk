@@ -107,8 +107,16 @@ body{
         position: absolute;
         left: 400px;
         top: 100px;
-        background-color: red;
+        background-color: white;
         padding: 15 px;
+     }
+     .stopwatch {
+        width: 200px;
+        position: absolute;
+        left: 400px;
+        top: 400px;
+        background-color:azure;
+        padding: 15px;
      }
 </style>
 <body>
@@ -150,6 +158,13 @@ body{
     <input id="todoinput" placeholder="New task">
     <button onclick="addTask()">Add</button>
     <ul id="todolist"></ul>
+    <div class="stopwatch" id="stopwatch">
+        <h3>Stopwatch</h3>
+        <div id="stopwatchtime">0</div>
+        <button onclick="startStopwatch()">Start</button>
+        <button onclick="stopStopwatch()">Stop</button>
+        <button onclick="resetStopwatch()">Reset</button>
+    </div>
 </div>
 </body>
 <script>
@@ -377,6 +392,49 @@ todo.onmousedown = function(e) {
         document.onmouseup = null;
     };
 };
+
+let seconds = 0;
+let timer = null;
+let running = false;
+
+function startStopwatch() {
+    if (running) {
+        return;
+    }
+
+    running = true;
+    timer = setInterval(function() {
+        seconds = second + 1;
+        document.getElementById("stopwatchtime").textContent = seconds; }, 1000);
+    }
+
+    function stopStopwatch() {
+        clearInterval(timer);
+        running = false;
+    }
+
+    function resetStopwatch() {
+        clearInterval(timer);
+        running = false;
+        seconds = 0;
+        document.getElementById("stopwatchtime").textContent = seconds;
+    }
+
+    let stopwatch = document.getElementById("stopwatch");
+
+    stopwatch.onmousedown = function(e) {
+        if (e.target !=stopwatch) {
+            return;
+        }
+
+        let offsetX = e.clientX - stopwatch.offsetLeft;
+        let offsetY = e.clientY - stopwatch.offsetTop;
+
+        document.onmousemove = function(e) {
+            stopwatch.style.left = (e.clientX - offsetX) + "px";
+            stopwatch.style.top = (e.clientY - offsetY) + "px";
+        };
+    };
 </script>
 
 </html>
