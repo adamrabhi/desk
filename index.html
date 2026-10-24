@@ -111,8 +111,8 @@ body{
         padding: 15px;
      }
      .stopwatch {
-        width: 200px;
-        height: 200px;
+        width: 100px;
+        height: 100px;
         position: absolute;
         left: 400px;
         top: 400px;
@@ -165,14 +165,14 @@ body{
     <input id="todoinput" placeholder="New task">
     <button onclick="addTask()">Add</button>
     <ul id="todolist"></ul>
-    </div>
-    <div class="stopwatch" id="stopwatch">
-        <h3>Stopwatch</h3>
-        <div id="stopwatchtime">0</div>
-        <button onclick="startStopwatch()">Start</button>
-        <button onclick="stopStopwatch()">Stop</button>
-        <button onclick="resetStopwatch()">Reset</button>
-    </div>
+ </div>
+<div class="stopwatch" id="stopwatch">
+    <h3>Stopwatch</h3>
+    <div id="stopwatchtime">0</div>
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="stopStopwatch()">Stop</button>
+    <button onclick="resetStopwatch()">Reset</button>
+</div>
 </body>
 <script>
     let output = document.getElementById("calculatoroutput");
