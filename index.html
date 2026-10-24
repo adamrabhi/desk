@@ -108,20 +108,27 @@ body{
         left: 400px;
         top: 100px;
         background-color: white;
-        padding: 15 px;
+        padding: 15px;
      }
      .stopwatch {
         width: 200px;
+        height: 200px;
         position: absolute;
         left: 400px;
         top: 400px;
         background-color:azure;
+        border-radius: 10px solid black;
         padding: 15px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
      }
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 550</h1> 
+    <h1 style=>mydesk vercel updated 616</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -158,6 +165,7 @@ body{
     <input id="todoinput" placeholder="New task">
     <button onclick="addTask()">Add</button>
     <ul id="todolist"></ul>
+    </div>
     <div class="stopwatch" id="stopwatch">
         <h3>Stopwatch</h3>
         <div id="stopwatchtime">0</div>
@@ -165,7 +173,6 @@ body{
         <button onclick="stopStopwatch()">Stop</button>
         <button onclick="resetStopwatch()">Reset</button>
     </div>
-</div>
 </body>
 <script>
     let output = document.getElementById("calculatoroutput");
@@ -404,7 +411,7 @@ function startStopwatch() {
 
     running = true;
     timer = setInterval(function() {
-        seconds = second + 1;
+        seconds = seconds + 1;
         document.getElementById("stopwatchtime").textContent = seconds; }, 1000);
     }
 
@@ -433,6 +440,11 @@ function startStopwatch() {
         document.onmousemove = function(e) {
             stopwatch.style.left = (e.clientX - offsetX) + "px";
             stopwatch.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
         };
     };
 </script>
