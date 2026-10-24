@@ -97,10 +97,15 @@ body{
         border: none;
         background-color: yellow;
      }
+     #colorpicker {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+     }
 </style>
 <body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 745</h1> 
+    <h1 style=>mydesk vercel updated 804</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -127,6 +132,10 @@ body{
         <button onclick="calculate()">=</button>
         <button onclick="clearCalculator()">AC</button>
     </div>
+</div>
+<div id="colorpicker">
+    <input id="hexinput" placeholder="#ff000">
+    <button onclick="changeBackground()">Change Background</button>"
 </div>
 </body>
 <script>
@@ -294,6 +303,11 @@ body{
             document.onmouseup = null;
         };
     };
+}
+
+function changeBackground() {
+    let hexInput = document.getElementById("hexinput");
+    document.body.style.backgroundColor = hexInput.value;
 }
 </script>
 
