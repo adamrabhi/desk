@@ -85,7 +85,7 @@ body{
         background-color: greenyellow;
     }
     .stickynote {
-        width: 150px;
+        width: 100px;
         position: absolute;
         background-color: yellow;
         padding: 15px;
@@ -259,12 +259,18 @@ body{
     };
 
     function addStickyNote() {
+        
+        let colors = ["red","orange","yellow","green","blue","indigo","violet"];
+        let randomNumber = Math.floor(Math.random() * 7);
+        let randomColor = colors[randomNumber];
         let note = document.createElement("div");
         note.className = "stickynote";
-        note.style.left = "200px";
-        note.style.top = "200px";
+        note.style.backgroundColor = randomColor;
+        note.style.left = "100px";
+        note.style.top = "100px";
 
         let text = document.createElement("textarea");
+        text.style.backgroundColor = randomColor;
 
         note.appendChild(text);
         document.body.appendChild(note);
