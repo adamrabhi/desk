@@ -149,7 +149,7 @@ body{
 </style>
 <body></body>
     <title>Your Desk</title>
-    <h1 style=>mydesk vercel updated 726</h1> 
+    <h1 style=>mydesk vercel updated 827</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
@@ -529,7 +529,7 @@ function resetStopwatch() {
         let city = document.getElementById("cityinput").value;
 
         try {
-            let geoUrl = "https://geocoding-api.openmeteo.com/v1/search?name" + city + "&count=1";
+            let geoUrl = "https://geocoding-api.open-meteo.com/v1/search?name=" + city + "&count=1";
             let geoResponse = await fetch(geoUrl);
             let geoData = await geoResponse.json();
 
@@ -543,7 +543,7 @@ function resetStopwatch() {
          let longitude = geoData.results[0].longitude;
          let cityName = geoData.results[0].name;
 
-         let url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&current_weather=true&daily=temperature_2m_max,temperature_2m_min&te,temperature_unit=fahrenheit&timezone=auto";
+        let url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&current_weather=true&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=auto";
 
          let response = await fetch(url);
          let data = await response.json();
