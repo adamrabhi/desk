@@ -201,9 +201,10 @@ body{
 </div>
 <div class="weather" id="weather">
     <h3>Weather</h3>
-    <input id="cityinput" value="Newark">
+    <input id="cityinput" value="New York">
     <button onclick="getWeather()">Search</button>
     <div id="weathernow">plz wait</div>
+    <div id="weathertype"></div>
     <div id="weatherdays"></div>
 </div>
 </body>
@@ -535,6 +536,7 @@ function resetStopwatch() {
 
             if (geoData.results == undefined) {
                 document.getElementById("weathernow").textContent = "City not found";
+                document.getElementById("weathertype").textContent = "";
                 document.getElementById("weatherdays").innerHTML = "";
                 return;
             }
@@ -550,6 +552,21 @@ function resetStopwatch() {
 
          document.getElementById("weathernow").textContent = cityName + " now: " + data.current_weather.temperature + "F";
 
+        let code = data.current_weather.weathercode;
+        let isRaining = false;
+
+        if (code >= 51 && code <= 67) { // hehe 67
+            isRaining = true;
+        }
+        if (code >= 95) {
+            ifRaining = true;
+        }
+        
+        if (isRaining) {
+            document.getElementById("weathertype").textContent = "Its Raining ):";
+        } else {
+            document.getElementById("weathertype").textContent = "Its Sunny!";
+        }
          let days = document.getElementById("weatherdays");
          days.innerHTML = "";
 
