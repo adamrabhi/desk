@@ -628,6 +628,7 @@ function resetStopwatch() {
         let randomNumber = Math.floor(Math.random() * 20);
         document.getElementById("ballresult").textContent = options[randomNumber];
     }
+    let eightball = document.getElementById("eightball");
     eightball.onmousedown = function(e) {
         if (e.target != eightball) {
             return;
