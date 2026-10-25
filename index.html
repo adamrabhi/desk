@@ -576,11 +576,32 @@ function resetStopwatch() {
             days.appendChild(line);
          }
         } catch (error) {
-            document.getElementById("weathernow").textContent = "Couldnt load weahter";
+            document.getElementById("weathernow").textContent = "Couldnt load weather";
         }
     }
 
     getWeather();
+
+    let weather = document.getElementById("weahter");
+
+    weather.onmousedown = function(e) {
+        if (e.target != weather) {
+            return;
+        }
+
+        let offsetX = e.clientX - weather.offsetLeft;
+        let offsetY = e.clientY - weather.offsetTop;
+
+        document.onmousemove = function(e) {
+            weather.style.left = (e.clientX - offsetX) + "px";
+            weather.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
 </script>
 
 </html>
