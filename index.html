@@ -171,7 +171,7 @@ body{
     <title>Your Desk</title>
     <h1 style=>Your Workspace</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
-    
+    <button onclick="clearNotes()">Clear Sticky Notes</button>"
 <div class="calendar" id="calendar">
     <div class="calendar-top">Todays Date:</div>
     <div class="calendar-date"></div>
@@ -654,5 +654,12 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
+    function clearNotes() {
+        let notes = document.querySelectorAll(".stickynote");
+
+        for (let i = 0; i < notes.length; i++) {
+            notes[i].remove();
+        }
+    }
 </script>
 </html>
