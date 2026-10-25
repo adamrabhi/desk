@@ -624,5 +624,23 @@ function resetStopwatch() {
         let randomNumber = Math.floor(Math.random() * 20);
         document.getElementById("ballresult").textContent = options[randomNumber];
     }
+    eightball.onmousedown = function(e) {
+        if (e.target != eightball) {
+            return;
+        }
+        
+        let offsetX = e.clientX - eightball.offsetLeft;
+        let offsetY = e.clientY - eightball.offsetTop;
+
+        document.onmousemove = function(e) {
+            eightball.style.left = (e.clientX - offsetX) + "px";
+            eightball.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
 </script>
 </html>
