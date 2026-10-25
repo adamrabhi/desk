@@ -138,6 +138,14 @@ body{
         align-items: center;
         border-radius: 50%;
     }
+    .weather{
+        width: 200px;
+        position: absolute;
+        left: 700px;
+        top: 100px;
+        background-color: lightskyblue;
+        padding: 10px;
+    }
 </style>
 <body></body>
     <title>Your Desk</title>
@@ -190,6 +198,13 @@ body{
     <h3>Coin Flip</h3>
     <div id="coinresult">1 cent</div>
     <button onclick="flipCoin()">Flip</button>
+</div>
+<div class="weather" id="weather">
+    <h3>Weather</h3>
+    <input id="cityinput" value="Newark">
+    <button onclick="getWeather()">Search</button>
+    <div id="weathernow">plz wait</div>
+    <div id="weatherdays"></div>
 </div>
 </body>
 <script>
@@ -510,6 +525,45 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
+    async function getWeather() {
+        let city = document.getElementById("cityinput").value;
+
+        try {
+            let geoUrl = "https://geocoding-api.openmeteo.com/v1/search?name" + city + "&count=1";
+            let geoResponse = await fetch(geoUrl);
+            let geoData = await geoResponse.json();
+
+            if (geoData.results == undefined) {
+                document.getElementById("weathernow").textContent = "City not found";
+                document.getElementById("weatherdays").innerHTML = "";
+                return;
+            }
+
+         let latitude = geoData.results[0].latitude;
+         let longitude = geoData.results[0].longitude;
+         let cityName = geoData.results[0].name;
+
+         let url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&current_weather=true&daily=temperature_2m_max,temperature_2m_min&te,temperature_unit=fahrenheit&timezone=auto";
+
+         let response = await fetch(url);
+         let data = await response.json();
+
+         document.getElementById("weathernow").textContent = cityName + " now: " + data.current_weather.temperature + "F";
+
+         let days = document.getElementById("weatherdays");
+         days.innerHTML = "";
+
+         for (let i = 0; i < 3; i++) {
+            let line = document.createElement("div");
+            line.textContent = data.daily.time[i] + ": " + data.daily.temperature_2m_max[i] + "° / " + data.daily.temperature_2m_min[i] + "°";
+            days.appendChild(line);
+         }
+        } catch (error) {
+            document.getElementById("weathernow").textContent = "Couldnt load weahter";
+        }
+    }
+
+    getWeather();
 </script>
 
 </html>
