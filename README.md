@@ -1,1 +1,2 @@
-# desk
+
+A simple interactive website built using HTML, CSS and Java. The tools in the website are a calculator, clock, calendar, sticky notes, stopwatch, todo list, coin flip, weather forecast and a Magic 8 ball. To run it just click on the demo link or download the HTML
