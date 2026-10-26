@@ -127,6 +127,20 @@ body{
         justify-content: center;
         align-items: center;
      }
+     .timer {
+       width: 200px;
+       height: 200px;
+       position: absolute;
+       background-color: azure;
+       border: 10px solid black;
+       padding: 15px;
+       border-radius: 10%;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+
+     }
     .coin {
         width: 90px;
         height: 90px;
@@ -168,7 +182,7 @@ body{
     }
 </style>
 <body></body>
-    <title>Your Desk</title>
+    <title>Your Desk vercel updated 925</title>
     <h1 style=>Your Desk</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
     <button onclick="clearNotes()">Clear Sticky Notes</button>
@@ -218,6 +232,7 @@ body{
 </div>
 <div class="timer" id="timer">
     <h3>Timer</h3>
+    <input id="timerinput" type="number" placeholder="Seconds">
     <div id="timertime">00:00:00.000</div>
     <button onclick="startTimer()">Start</button>
     <button onclick="stopTImer()">Stop</button>
@@ -670,6 +685,65 @@ function resetStopwatch() {
         for (let i = 0; i < notes.length; i++) {
             notes[i].remove();
         }
+    }
+    let timeLeft = 0;
+    let timerInterval = null;
+
+    function showTimer() {
+        let hours = Math.floor(timeLeft / 3600);
+        let minutes = Math.floor(timeLeft/ 60) % 60;
+        let seconds = timeLeft % 60;
+
+        document.getElementById("timertime").textContent =
+            String(hours).padStart(2,"0") + ":" +
+            String(minutes).padStart(2,"0") + ":" +
+            String(seconds).padStart(2,"0");
+    }
+    function startTime() {
+        if (timerInterval != null) {
+            return;
+        }
+
+        if (timeLeft == 0) {
+            timeLeft = Number(document.getElementById("timerinput").value);
+        }
+        if (timeLeft <= 0) {
+            return;
+        }
+
+        showTimer();
+
+        timerInterval = setInterval(function() {
+            timeLeft--;
+            showTimer();
+
+            if (timeLeft <=0) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                alert("WEWOO TIME IS UP!!!!");
+            }
+        }, 1000);
+    }
+    function stopTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+
+    }
+    function resetTimer(){
+        stopTimer();
+        timeLeft = 0;
+        document.getElementById("timterinput").value= "";
+        showTimer();
+    }
+
+    function addMinute() {
+        timeLeft += 60;
+        showTimer();
+    }
+    function addHour() {
+        timeLeft += 3600;
+        showTimer();
+
     }
 </script>
 </html>
