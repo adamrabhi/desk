@@ -238,7 +238,7 @@ body{
     <button onclick="stopTImer()">Stop</button>
     <button onclick="resetTimer()">Reset</button>
     <button onclick="addMinute()">Add Minute</button>
-    <button onclick="addHour()">addHour/button>
+    <button onclick="addHour()">addHour</button>
 </div>
 <div class="coin" id="coin">
     <h3>Coin Flip</h3>
@@ -699,7 +699,7 @@ function resetStopwatch() {
             String(minutes).padStart(2,"0") + ":" +
             String(seconds).padStart(2,"0");
     }
-    function startTime() {
+    function startTimer() {
         if (timerInterval != null) {
             return;
         }
