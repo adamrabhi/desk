@@ -182,8 +182,8 @@ body{
     }
 </style>
 <body></body>
-    <title>Your Desk vercel updated 1000</title>
-    <h1 style=>Your Desk</h1> 
+    <title>Your Desk</title>
+    <h1 style=>Your Desk vercel 1019</h1> 
     <button onclick="addStickyNote()">New Sticky Note</button>
     <button onclick="clearNotes()">Clear Sticky Notes</button>
     <button>Website made by Adam Rabhi</button>
@@ -745,5 +745,26 @@ function resetStopwatch() {
         showTimer();
 
     }
+
+    let timer = document.getElementsById("timer");
+
+    timer.onmousedown = function(e) {
+        if (e.target != timer) {
+            return;
+        }
+
+        let offsetX = e.clientX - timer.offsetLeft;
+        let offsetY = e.clientY - timer.offsetTop;
+
+        document.onmousemove = function(e) {
+            timer.style.left = (e.clientX - offsetX) +"px";
+            timer.style.top = (e.clientY - offsetY) + "px";
+        };
+        
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
 </script>
 </html>
