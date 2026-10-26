@@ -235,7 +235,7 @@ body{
     <input id="timerinput" type="number" placeholder="Seconds">
     <div id="timertime">00:00:00.000</div>
     <button onclick="startTimer()">Start</button>
-    <button onclick="stopTImer()">Stop</button>
+    <button onclick="stopTimer()">Stop</button>
     <button onclick="resetTimer()">Reset</button>
     <button onclick="addMinute()">Add Minute</button>
     <button onclick="addHour()">addHour</button>
@@ -732,7 +732,7 @@ function resetStopwatch() {
     function resetTimer(){
         stopTimer();
         timeLeft = 0;
-        document.getElementById("timterinput").value= "";
+        document.getElementById("timerinput").value= "";
         showTimer();
     }
 
