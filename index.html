@@ -507,6 +507,7 @@ function showTime() {
     document.getElementById("stopwatchtime").textContent =
     hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 }
+let stopwatchInterval = null;
 
 function startStopwatch() {
     if (running) {
@@ -514,7 +515,7 @@ function startStopwatch() {
     }
     
     running = true;
-    timer = setInterval(function() {
+    stopwatchInterval = setInterval(function() {
         totalMs = totalMs + 10;
         showTime(); }, 10); 
 }
