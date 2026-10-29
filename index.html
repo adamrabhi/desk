@@ -180,6 +180,9 @@ body{
         font: size 11px;
         margin-top: 10px;
     }
+    .hidden {
+        display: none !important;
+    }
 </style>
 <body></body>
     <title>Your Desk</title>
@@ -187,12 +190,12 @@ body{
     <button onclick="addStickyNote()">New Sticky Note</button>
     <button onclick="clearNotes()">Clear Sticky Notes</button>
     <button>Website made by Adam Rabhi</button>
-<div class="calendar" id="calendar">
+<div class="calendar hidden" id="calendar">
     <div class="calendar-top">Todays Date:</div>
     <div class="calendar-date"></div>
 </div>
-<div class="clock" id="clock"></div>
-<div class="calculator" id="calculator">
+<div class="clock hidden" id="clock"></div>
+<div class="calculator hidden" id="calculator">
     <input id="calculatoroutput" value="0" readonly>
     <div class="calculatorbuttons">
         <button onclick="addNumber('7')">7</button>
@@ -213,24 +216,24 @@ body{
         <button onclick="clearCalculator()">AC</button>
     </div>
 </div>
-<div id="colorpicker">
+<div id="colorpicker hidden">
     <input id="hexinput" placeholder="#000000">
     <button onclick="changeBackground()">Change Background</button>
 </div>
-<div class="todo" id="todo">
+<div class="todo hidden" id="todo">
     <h3>To-Do List</h3>
     <input id="todoinput" placeholder="New task">
     <button onclick="addTask()">Add</button>
     <ul id="todolist"></ul>
  </div>
-<div class="stopwatch" id="stopwatch">
+<div class="stopwatch hidden" id="stopwatch">
     <h3>Stopwatch</h3>
     <div id="stopwatchtime">00:00:00.000</div>
     <button onclick="startStopwatch()">Start</button>
     <button onclick="stopStopwatch()">Stop</button>
     <button onclick="resetStopwatch()">Reset</button>
 </div>
-<div class="timer" id="timer">
+<div class="timer hidden" id="timer">
     <h3>Timer</h3>
     <input id="timerinput" type="number" placeholder="Seconds">
     <div id="timertime">00:00:00.000</div>
@@ -240,12 +243,12 @@ body{
     <button onclick="addMinute()">Add Minute</button>
     <button onclick="addHour()">Add Hour</button>
 </div>
-<div class="coin" id="coin">
+<div class="coin hidden" id="coin">
     <h3>Coin Flip</h3>
     <div id="coinresult">1 cent</div>
     <button onclick="flipCoin()">Flip</button>
 </div>
-<div class="weather" id="weather">
+<div class="weather hidden" id="weather">
     <h3>Weather</h3>
     <input id="cityinput" value="New York">
     <button onclick="getWeather()">Search</button>
@@ -254,7 +257,7 @@ body{
     <div id="weatherdays"></div>
     <div class="credit">Weather data from <a href="https://open-meteo.com/" target="_blank">Open-Meteo.com</a></div>
 </div>
-<div class="eightball" id="eightball">
+<div class="eightball hidden" id="eightball">
     <h3>8 Ball</h3>
     <div id="ballresult"></div>
     <button onclick="shake()">Shake</button>
