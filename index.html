@@ -490,7 +490,6 @@ todo.onmousedown = function(e) {
 };
 
 let totalMs = 0;
-let timer = null;
 let running = false;
 
 function showTime() {
@@ -521,12 +520,12 @@ function startStopwatch() {
 }
 
 function stopStopwatch() {
-    clearInterval(timer);
+    clearInterval(stopwatchInterval);
     running = false;
 }
 
 function resetStopwatch() {
-    clearInterval(timer);
+    clearInterval(stopwatchInterval);
     running = false;
     totalMs = 0;
     showTime();
