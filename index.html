@@ -183,19 +183,53 @@ body{
     .hidden {
         display: none !important;
     }
+    #menubutton {
+        position: fixed;
+        top: 10px;
+        left: 10x;
+        z-index: 10000000000001;
+    }
+
+    #sidebar {
+        display: note;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100%;
+        background-color: #fff;
+        padding: 60px 10px 10px 10px;
+        z-index: 100000000000;
+    }
 </style>
 <body></body>
     <title>Your Desk</title>
-    <h1 style=>Your Desk vercel 1104</h1> 
+    <h1 style=>Your Desk vercel 300</h1> 
+    <button id="menubutton" onclick="toggleSidebar()">Menu</button>
+<div id="sidebar">
+    <h3>Spawn Objects</h3>
+    <button onclick="showWidget('calendar')">Calendar</button>
+    <button onclick="showWidget('clock')">Clock</button>
+    <button onclick="showWidget('calculator')">Calculator</button>
+    <button onclick="showWidget('todo')">To-Do List</button>
+    <button onclick="showWidget('stopwatch')">Stopwatch</button>
+    <button onclick="showWidget('timer')">Timer</button>
+    <button onclick="showWidget('coin')">Coin Flip</button>
+    <button onclick="showWidget('weather')">Weather</button>
+    <button onclick="showWidget('eightball')">8 Ball</button>
     <button onclick="addStickyNote()">New Sticky Note</button>
     <button onclick="clearNotes()">Clear Sticky Notes</button>
     <button>Website made by Adam Rabhi</button>
+</div>
 <div class="calendar hidden" id="calendar">
+    <button onclick="closeWidget('calendar')">X</button>
     <div class="calendar-top">Todays Date:</div>
     <div class="calendar-date"></div>
 </div>
 <div class="clock hidden" id="clock"></div>
+    <button onclick="closeWidget('clock')">X</button>
 <div class="calculator hidden" id="calculator">
+    <button onclick="closeWidget('calculator')">X</button>
     <input id="calculatoroutput" value="0" readonly>
     <div class="calculatorbuttons">
         <button onclick="addNumber('7')">7</button>
@@ -221,12 +255,14 @@ body{
     <button onclick="changeBackground()">Change Background</button>
 </div>
 <div class="todo hidden" id="todo">
+    <button onclick="closeWidget('todo')">X</button>
     <h3>To-Do List</h3>
     <input id="todoinput" placeholder="New task">
     <button onclick="addTask()">Add</button>
     <ul id="todolist"></ul>
  </div>
 <div class="stopwatch hidden" id="stopwatch">
+    <button onclick="closeWidget('stopwatch')">X</button>
     <h3>Stopwatch</h3>
     <div id="stopwatchtime">00:00:00.000</div>
     <button onclick="startStopwatch()">Start</button>
@@ -234,6 +270,7 @@ body{
     <button onclick="resetStopwatch()">Reset</button>
 </div>
 <div class="timer hidden" id="timer">
+    <button onclick="closeWidget('timer')">X</button>
     <h3>Timer</h3>
     <input id="timerinput" type="number" placeholder="Seconds">
     <div id="timertime">00:00:00.000</div>
@@ -244,11 +281,13 @@ body{
     <button onclick="addHour()">Add Hour</button>
 </div>
 <div class="coin hidden" id="coin">
+    <button onclick="closeWidget('coin')">X</button>
     <h3>Coin Flip</h3>
     <div id="coinresult">1 cent</div>
     <button onclick="flipCoin()">Flip</button>
 </div>
 <div class="weather hidden" id="weather">
+    <button onclick="closeWidget('weather')">X</button>
     <h3>Weather</h3>
     <input id="cityinput" value="New York">
     <button onclick="getWeather()">Search</button>
@@ -258,6 +297,7 @@ body{
     <div class="credit">Weather data from <a href="https://open-meteo.com/" target="_blank">Open-Meteo.com</a></div>
 </div>
 <div class="eightball hidden" id="eightball">
+    <button onclick="closeWidget('eightball')">X</button>
     <h3>8 Ball</h3>
     <div id="ballresult"></div>
     <button onclick="shake()">Shake</button>
@@ -769,5 +809,21 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
+    function toggleSidebar() {
+        let sidebar = document.getElementById("sidebar");
+        if (sidebar.style.display == "block") {
+            sidebar.style.display = "none";
+        } else {
+            sidebar.style.display = "block";
+        }
+    }
+
+    function showWidget(id) {
+        document.getElementById(id).classList.remove("hidden");
+    }
+
+    function closeWidget(id) {
+        document.getElementById(id).classList.add("hidden");
+    }
 </script>
 </html>
