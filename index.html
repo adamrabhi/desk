@@ -244,10 +244,27 @@ body{
         font-size: 40px;
         margin: 5px;
     }
+    .d10 {
+        width: 120px;
+        position: absolute;
+        left: 500px;
+        top: 250px;
+        background-color:red;
+        border: 3px solid black;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #d10result {
+        font-size: 40px;
+        margin: 10px;
+    }
 </style>
 <body></body>
     <title>Your Desk</title>
-    <h1 style=>Your Desk vercel 821</h1> 
+    <h1 style=>Your Desk vercel 1003</h1> 
     <button id="menubutton" onclick="toggleSidebar()">Menu</button>
 <div id="sidebar">
     <button id="sidebarclose" onclick="toggleSidebar()">X</button>
@@ -263,6 +280,7 @@ body{
     <button onclick="showWidget('eightball')">8 Ball</button>
     <button onclick="showWidget('d6')">D6</button>
     <button onclick="showWidget('d4')">D4</button>
+    <button onclick="showWidget('d10')">D10</button>
     <button onclick="addStickyNote()">New Sticky Note</button>
     <button onclick="clearNotes()">Clear Sticky Notes</button>
     <button>Website made by Adam Rabhi</button>
@@ -359,6 +377,12 @@ body{
     <h3>D4</h3>
     <div id="d4result">?</div>
     <button onclick="rollD4()">Roll</button>
+</div>
+<div class="d10 hidden" id="d10">
+    <button onclick="closeWidget('d10')">X</button>
+    <h3>D10</h3>
+    <div id="410result">?</div>
+    <button onclick="rollD10()">Roll</button>
 </div>
 </body>
 <script>
@@ -933,5 +957,31 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
+
+    function rollD10() {
+        let roll = Math.floor(Math.random() * 10) + 1;
+        document.getElementById("d10result").textContent = roll;
+    }
+    let d10 = document.getElementById("d10");
+
+    d10.onmousedown = function(e) {
+        if (e.target != d10) {
+            return;
+        }
+
+        let offsetX = e.clientX - d10.offsetLeft;
+        let offsetY = e.clientY - d10.offsetTop;
+
+        document.onmousemove = function(e) {
+            d10.style.left = (e.clientX - offsetX) + "px";
+            d10.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
+    let
 </script>
 </html>
