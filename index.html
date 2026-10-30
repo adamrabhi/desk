@@ -994,6 +994,30 @@ function resetStopwatch() {
             document.onmouseup = null;
         };
     };
-    let
+    function rollD12() {
+        let roll = Math.floor(Math.random() * 12) + 1;
+        document.getElementById("d12result").textContent = roll;
+    }
+
+    let d12 = document.getElementById("d12");
+
+    d12.onmousedown = function(e) {
+        if (e.target != d12) {
+            return;
+        }
+
+        let offsetX = e.clientX - d12.offsetLeft;
+        let offsetY = e.clientY - d12.offsetTop;
+
+        document.onmousemove = function(e) {
+            d12.style.left = (e.clientX - offsetX) + "px";
+            d12.style.top = (e.clientY - offsetY) + "px";
+        };
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    };
 </script>
 </html>
